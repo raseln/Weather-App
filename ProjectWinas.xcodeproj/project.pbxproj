@@ -3,18 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56A0737B618EDC4A1C4BD74F /* Pods_ProjectWinas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CF61B707BA4CF79078B839 /* Pods_ProjectWinas.framework */; };
 		EB3B8E172322330B0072564F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B8E162322330B0072564F /* AppDelegate.swift */; };
 		EB3B8E192322330B0072564F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B8E182322330B0072564F /* ViewController.swift */; };
 		EB3B8E1C2322330B0072564F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB3B8E1A2322330B0072564F /* Main.storyboard */; };
 		EB3B8E1E2322330D0072564F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB3B8E1D2322330D0072564F /* Assets.xcassets */; };
 		EB3B8E212322330D0072564F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB3B8E1F2322330D0072564F /* LaunchScreen.storyboard */; };
+		EB836CBE2326577E000F0941 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB836CBC2326577E000F0941 /* TableViewCell.xib */; };
+		EB836CBF2326577E000F0941 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB836CBD2326577E000F0941 /* TableViewCell.swift */; };
+		EB836CC22326594F000F0941 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB836CC12326594F000F0941 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		39CF61B707BA4CF79078B839 /* Pods_ProjectWinas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectWinas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AD4F9B2E73F201FAB5B4DB1 /* Pods-ProjectWinas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectWinas.debug.xcconfig"; path = "Target Support Files/Pods-ProjectWinas/Pods-ProjectWinas.debug.xcconfig"; sourceTree = "<group>"; };
+		796AD0C75DCA4A2D52FFDB87 /* Pods-ProjectWinas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectWinas.release.xcconfig"; path = "Target Support Files/Pods-ProjectWinas/Pods-ProjectWinas.release.xcconfig"; sourceTree = "<group>"; };
 		EB3B8E132322330B0072564F /* ProjectWinas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectWinas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3B8E162322330B0072564F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB3B8E182322330B0072564F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +29,9 @@
 		EB3B8E1D2322330D0072564F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB3B8E202322330D0072564F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB3B8E222322330D0072564F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB836CBC2326577E000F0941 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		EB836CBD2326577E000F0941 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		EB836CC12326594F000F0941 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56A0737B618EDC4A1C4BD74F /* Pods_ProjectWinas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A401CAF5B4ED26705F3CB5E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5AD4F9B2E73F201FAB5B4DB1 /* Pods-ProjectWinas.debug.xcconfig */,
+				796AD0C75DCA4A2D52FFDB87 /* Pods-ProjectWinas.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BC1DA16F0D1E17A3B1483F9C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39CF61B707BA4CF79078B839 /* Pods_ProjectWinas.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EB3B8E0A2322330B0072564F = {
 			isa = PBXGroup;
 			children = (
+				EB836CC02326590E000F0941 /* Models */,
+				EB836CBB2326574C000F0941 /* Views */,
 				EB3B8E152322330B0072564F /* ProjectWinas */,
 				EB3B8E142322330B0072564F /* Products */,
+				6A401CAF5B4ED26705F3CB5E /* Pods */,
+				BC1DA16F0D1E17A3B1483F9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +96,23 @@
 			path = ProjectWinas;
 			sourceTree = "<group>";
 		};
+		EB836CBB2326574C000F0941 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB836CBD2326577E000F0941 /* TableViewCell.swift */,
+				EB836CBC2326577E000F0941 /* TableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EB836CC02326590E000F0941 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EB836CC12326594F000F0941 /* Location.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +120,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB3B8E252322330D0072564F /* Build configuration list for PBXNativeTarget "ProjectWinas" */;
 			buildPhases = (
+				4529439BDB56508DB008EC38 /* [CP] Check Pods Manifest.lock */,
 				EB3B8E0F2322330B0072564F /* Sources */,
 				EB3B8E102322330B0072564F /* Frameworks */,
 				EB3B8E112322330B0072564F /* Resources */,
+				F4056B379B1A96690FD8C201 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB3B8E212322330D0072564F /* LaunchScreen.storyboard in Resources */,
+				EB836CBE2326577E000F0941 /* TableViewCell.xib in Resources */,
 				EB3B8E1E2322330D0072564F /* Assets.xcassets in Resources */,
 				EB3B8E1C2322330B0072564F /* Main.storyboard in Resources */,
 			);
@@ -130,12 +182,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4529439BDB56508DB008EC38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProjectWinas-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4056B379B1A96690FD8C201 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProjectWinas/Pods-ProjectWinas-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProjectWinas/Pods-ProjectWinas-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProjectWinas/Pods-ProjectWinas-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EB3B8E0F2322330B0072564F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB836CBF2326577E000F0941 /* TableViewCell.swift in Sources */,
 				EB3B8E192322330B0072564F /* ViewController.swift in Sources */,
+				EB836CC22326594F000F0941 /* Location.swift in Sources */,
 				EB3B8E172322330B0072564F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +376,7 @@
 		};
 		EB3B8E262322330D0072564F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AD4F9B2E73F201FAB5B4DB1 /* Pods-ProjectWinas.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +395,7 @@
 		};
 		EB3B8E272322330D0072564F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 796AD0C75DCA4A2D52FFDB87 /* Pods-ProjectWinas.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
