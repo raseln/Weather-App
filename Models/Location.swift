@@ -11,17 +11,11 @@
 //
 //   let location = try? newJSONDecoder().decode(Location.self, from: jsonData)
 
+import RealmSwift
+
 // MARK: - LocationElement
-struct LocationElement: Codable {
-    let id: Int
-    let name, region: String
-    let country: Country
-    let lat, lon: Double
-    let url: String
+class LocationElement: Object, Codable {
+    @objc dynamic var id: Int
+    @objc dynamic var name, region: String
+    @objc dynamic var lat, lon: Double
 }
-
-enum Country: String, Codable {
-    case bangladesh = "Bangladesh"
-}
-
-typealias Location = [LocationElement]
