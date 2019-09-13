@@ -14,10 +14,13 @@
 		EB3B8E1C2322330B0072564F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB3B8E1A2322330B0072564F /* Main.storyboard */; };
 		EB3B8E1E2322330D0072564F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB3B8E1D2322330D0072564F /* Assets.xcassets */; };
 		EB3B8E212322330D0072564F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB3B8E1F2322330D0072564F /* LaunchScreen.storyboard */; };
-		EB7129302327951100A22883 /* DetailWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB71292F2327951100A22883 /* DetailWeatherViewController.swift */; };
 		EB836CBE2326577E000F0941 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB836CBC2326577E000F0941 /* TableViewCell.xib */; };
 		EB836CBF2326577E000F0941 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB836CBD2326577E000F0941 /* TableViewCell.swift */; };
 		EB836CC22326594F000F0941 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB836CC12326594F000F0941 /* Location.swift */; };
+		EB86563A232B696D00E288CB /* DetailWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB865639232B696D00E288CB /* DetailWeatherViewController.swift */; };
+		EB86563D232B754500E288CB /* HourlyWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86563B232B754500E288CB /* HourlyWeatherCollectionViewCell.swift */; };
+		EB86563E232B754500E288CB /* HourlyWeatherCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB86563C232B754500E288CB /* HourlyWeatherCollectionViewCell.xib */; };
+		EB908989232B550D00487580 /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB908988232B550D00487580 /* WeatherCollectionViewCell.swift */; };
 		EBEF3FF323289CFC005F8D0A /* PlaceAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEF3FF223289CFC005F8D0A /* PlaceAddViewController.swift */; };
 		EBEF40132328EB6E005F8D0A /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEF40122328EB6E005F8D0A /* WeatherModel.swift */; };
 /* End PBXBuildFile section */
@@ -34,10 +37,13 @@
 		EB3B8E1D2322330D0072564F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB3B8E202322330D0072564F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB3B8E222322330D0072564F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EB71292F2327951100A22883 /* DetailWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherViewController.swift; sourceTree = "<group>"; };
 		EB836CBC2326577E000F0941 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		EB836CBD2326577E000F0941 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		EB836CC12326594F000F0941 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		EB865639232B696D00E288CB /* DetailWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailWeatherViewController.swift; path = "/Users/rasel/Documents/swift codes/ProjectWinas/Controllers/DetailWeatherViewController.swift"; sourceTree = "<absolute>"; };
+		EB86563B232B754500E288CB /* HourlyWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		EB86563C232B754500E288CB /* HourlyWeatherCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyWeatherCollectionViewCell.xib; sourceTree = "<group>"; };
+		EB908988232B550D00487580 /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		EBEF3FF223289CFC005F8D0A /* PlaceAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAddViewController.swift; sourceTree = "<group>"; };
 		EBEF40122328EB6E005F8D0A /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,8 +122,8 @@
 		EB71292E2327948000A22883 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EB865639232B696D00E288CB /* DetailWeatherViewController.swift */,
 				EB3B8E182322330B0072564F /* ViewController.swift */,
-				EB71292F2327951100A22883 /* DetailWeatherViewController.swift */,
 				EBEF3FF223289CFC005F8D0A /* PlaceAddViewController.swift */,
 			);
 			path = Controllers;
@@ -127,6 +133,9 @@
 			isa = PBXGroup;
 			children = (
 				EB836CBD2326577E000F0941 /* TableViewCell.swift */,
+				EB908988232B550D00487580 /* WeatherCollectionViewCell.swift */,
+				EB86563B232B754500E288CB /* HourlyWeatherCollectionViewCell.swift */,
+				EB86563C232B754500E288CB /* HourlyWeatherCollectionViewCell.xib */,
 				EB836CBC2326577E000F0941 /* TableViewCell.xib */,
 			);
 			path = Views;
@@ -201,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB86563E232B754500E288CB /* HourlyWeatherCollectionViewCell.xib in Resources */,
 				EB3B8E212322330D0072564F /* LaunchScreen.storyboard in Resources */,
 				EB836CBE2326577E000F0941 /* TableViewCell.xib in Resources */,
 				EB3B8E1E2322330D0072564F /* Assets.xcassets in Resources */,
@@ -257,9 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB7129302327951100A22883 /* DetailWeatherViewController.swift in Sources */,
+				EB908989232B550D00487580 /* WeatherCollectionViewCell.swift in Sources */,
 				EB23B462232A14C900FC1A0A /* DataAddedFromChildController.swift in Sources */,
+				EB86563D232B754500E288CB /* HourlyWeatherCollectionViewCell.swift in Sources */,
 				EB836CBF2326577E000F0941 /* TableViewCell.swift in Sources */,
+				EB86563A232B696D00E288CB /* DetailWeatherViewController.swift in Sources */,
 				EB3B8E192322330B0072564F /* ViewController.swift in Sources */,
 				EBEF40132328EB6E005F8D0A /* WeatherModel.swift in Sources */,
 				EB836CC22326594F000F0941 /* Location.swift in Sources */,

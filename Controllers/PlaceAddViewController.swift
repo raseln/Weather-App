@@ -18,7 +18,6 @@ class PlaceAddViewController: UIViewController {
     let googlePlace = "AIzaSyA_8NSxlCCCZ9uY3Pacx3XmE6RDQmPF5xc"
     let apuxKey = "d076b7c682634184b1282949190909"
     
-    
     var locationList = [LocationElement]()
 
     @IBOutlet weak var searchBar: UISearchBar!
