@@ -15,16 +15,26 @@ import Foundation
 
 // MARK: - Weather
 struct Weather: Codable {
-    let currently: Currently
+    var currently: Currently
     let hourly: Hourly
     let daily: Daily
+    let alerts: [Alert]?
 }
 
 // MARK: - Currently
 struct Currently: Codable {
     let time: Int
-    //let icon: Icon
-    let temperature: Double
+    let icon: Icon
+    let summary: String
+    var temperature: Double
+    let precipProbability: Double
+}
+
+// MARK: - Alert
+struct Alert: Codable {
+    let title: String
+    //let regions: [String]
+    let description: String
 }
 
 enum Icon: String, Codable {
@@ -33,6 +43,11 @@ enum Icon: String, Codable {
     case partlyCloudyDay = "partly-cloudy-day"
     case partlyCloudyNight = "partly-cloudy-night"
     case cloudy = "cloudy"
+    case rain = "rain"
+    case snow = "snow"
+    case sleet = "sleet"
+    case wind = "wind"
+    case fog = "fog"
 }
 
 // MARK: - Daily
@@ -45,7 +60,7 @@ struct Daily: Codable {
 // MARK: - DailyDatum
 struct DailyDatum: Codable {
     let time: Int
-    //let icon: Icon
+    let icon: Icon
     let temperatureHigh: Double
     let temperatureLow: Double
 }

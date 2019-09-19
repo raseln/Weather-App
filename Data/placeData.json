@@ -1,0 +1,92 @@
+[
+    {
+        "id": 173171,
+        "name": "Dacca, Bangladesh",
+        "region": "",
+        "country": "Bangladesh",
+        "lat": 23.72,
+        "lon": 90.41,
+        "url": "dacca-bangladesh"
+    },
+    {
+        "id": 173252,
+        "name": "Dakah, Bangladesh",
+        "region": "",
+        "country": "Bangladesh",
+        "lat": 23.72,
+        "lon": 90.41,
+        "url": "dakah-bangladesh"
+    },
+    {
+        "id": 183823,
+        "name": "Mujib City, Bangladesh",
+        "region": "",
+        "country": "Bangladesh",
+        "lat": 23.72,
+        "lon": 90.41,
+        "url": "mujib-city-bangladesh"
+    },
+    {
+        "id": 174248,
+        "name": "Dhaka, Bangladesh",
+        "region": "",
+        "country": "Bangladesh",
+        "lat": 23.72,
+        "lon": 90.41,
+        "url": "dhaka-bangladesh"
+    },
+    {
+        "id": 187348,
+        "name": "Rajarbag, Bangladesh",
+        "region": "",
+        "country": "Bangladesh",
+        "lat": 23.73,
+        "lon": 90.42,
+        "url": "rajarbag-bangladesh"
+    },
+    {
+        "id": 168615,
+        "name": "Barikabad, Bangladesh",
+        "region": "",
+        "country": "Bangladesh",
+        "lat": 23.73,
+        "lon": 90.4,
+        "url": "barikabad-bangladesh"
+    },
+    {
+        "id": 168981,
+        "name": "Baze Kakrail, Bangladesh",
+        "region": "",
+        "country": "Bangladesh",
+        "lat": 23.73,
+        "lon": 90.4,
+        "url": "baze-kakrail-bangladesh"
+    },
+    {
+        "id": 179105,
+        "name": "Kakrail, Bangladesh",
+        "region": "",
+        "country": "Bangladesh",
+        "lat": 23.73,
+        "lon": 90.4,
+        "url": "kakrail-bangladesh"
+    },
+    {
+        "id": 187553,
+        "name": "Ramna, Bangladesh",
+        "region": "",
+        "country": "Bangladesh",
+        "lat": 23.73,
+        "lon": 90.4,
+        "url": "ramna-bangladesh"
+    },
+    {
+        "id": 173172,
+        "name": "Dacca Ramna, Bangladesh",
+        "region": "",
+        "country": "Bangladesh",
+        "lat": 23.73,
+        "lon": 90.4,
+        "url": "dacca-ramna-bangladesh"
+    }
+]
