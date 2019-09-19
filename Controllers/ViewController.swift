@@ -309,8 +309,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                         var weather = try JSONDecoder().decode(Weather.self, from: value)
                         let temperatureInCelciuus = (weather.currently.temperature - 32) * 0.56
                         weather.currently.temperature = temperatureInCelciuus
-                        self.weatherList.insert(weather, at: indexPath.row)
-                        //self.weatherList.append(weather)
+                        //self.weatherList.insert(weather, at: indexPath.row)
+                        self.weatherList.append(weather)
                         cell.temperatureLabel.text = "\(String(format: "%.0f", temperatureInCelciuus))°C"
                         cell.temperatureImageView.image = UIImage(named: "storm")
                     } catch {
