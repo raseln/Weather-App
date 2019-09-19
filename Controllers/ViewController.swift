@@ -153,7 +153,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     func updateCurrentLocationTemperature(location: CLLocation) {
         if isConnected {
-            Alamofire.request("https://api.darksky.net/forecast/0a3080e5ebc094338e3a5fb7196e390b/\(location.coordinate.latitude),\(location.coordinate.longitude)", method: .get).responseData { response in
+            Alamofire.request("https://api.darksky.net/forecast/API_KEY/\(location.coordinate.latitude),\(location.coordinate.longitude)", method: .get).responseData { response in
                 if response.result.isFailure, let error = response.result.error {
                     print("Network Error: \(error.localizedDescription)")
                 }
@@ -315,7 +315,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         //If network is available then call api for data
 //        if isConnected {
-//            Alamofire.request("https://api.darksky.net/forecast/0a3080e5ebc094338e3a5fb7196e390b/\(location.lat),\(location.lon)", method: .get).responseData { response in
+//            Alamofire.request("https://api.darksky.net/forecast/API_KEY/\(location.lat),\(location.lon)", method: .get).responseData { response in
 //                if response.result.isFailure, let error = response.result.error {
 //                    print("Network Error: \(error.localizedDescription)")
 //                }

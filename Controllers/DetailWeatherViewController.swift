@@ -19,7 +19,7 @@ class DetailWeatherViewController: UIViewController {
     @IBOutlet weak var collectionViewHourly: UICollectionView!
     @IBOutlet weak var tableViewWeekly: UITableView!
     
-    let key = "0a3080e5ebc094338e3a5fb7196e390b"
+    let key = "API_KEY"
     let baseUrl = "https://api.darksky.net/forecast"
     var location: LocationElement?
     
@@ -61,7 +61,7 @@ class DetailWeatherViewController: UIViewController {
     
     func getWeatherData() {
         //let params: Parameters = ["key": key, "latitude": location?.lat ?? "23.719999", "longitude": location?.lon ?? "90.409999"]
-        Alamofire.request("https://api.darksky.net/forecast/0a3080e5ebc094338e3a5fb7196e390b/\(location?.lat ?? 23.719999),\(location?.lon ?? 90.409999)", method: .get).responseData { response in
+        Alamofire.request("https://api.darksky.net/forecast/API_KEY/\(location?.lat ?? 23.719999),\(location?.lon ?? 90.409999)", method: .get).responseData { response in
             if response.result.isFailure, let error = response.result.error {
                 print(error)
             }

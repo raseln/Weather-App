@@ -15,8 +15,7 @@ class PlaceAddViewController: UIViewController {
     //Loading indicator
     let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
     
-    let googlePlace = "AIzaSyA_8NSxlCCCZ9uY3Pacx3XmE6RDQmPF5xc"
-    let apuxKey = "d076b7c682634184b1282949190909"
+    let apuxKey = "API_KEY"
     
     var locationList = [LocationElement]()
 
