@@ -60,7 +60,6 @@ class DetailWeatherViewController: UIViewController {
     }
     
     func getWeatherData() {
-        //let params: Parameters = ["key": key, "latitude": location?.lat ?? "23.719999", "longitude": location?.lon ?? "90.409999"]
         Alamofire.request("https://api.darksky.net/forecast/API_KEY/\(location?.lat ?? 23.719999),\(location?.lon ?? 90.409999)", method: .get).responseData { response in
             if response.result.isFailure, let error = response.result.error {
                 print(error)
@@ -78,10 +77,6 @@ class DetailWeatherViewController: UIViewController {
                 }
             }
         }
-        
-        //        Alamofire.request(baseUrl, method: .post, parameters: params).responseJSON { (response) in
-        //            print(response.result.value)
-        //        }
     }
     
     func readFromJSON() {
@@ -135,24 +130,6 @@ extension DetailWeatherViewController: UICollectionViewDataSource, UICollectionV
             cell.weatherImageView.image = UIImage(named: "storm")
             cell.timeLabel.text = "\(dateFormatter.string(from: time))"
         }
-//        let hourly = hourlyDataList[indexPath.row]
-//        let temperatureInCelciuus = (Int) ((hourly.temperature - 32) * 0.56)
-//        cell.temperatureLabel.text = "\(temperatureInCelciuus)°C"
-//        cell.weatherImageView.image = UIImage(named: "storm")
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeStyle = .short
-//        let time = Date(timeIntervalSince1970: TimeInterval(hourly.time))
-//        //print(dateFormatter.string(from: dateTime))
-//
-//        cell.timeLabel.text = "\(dateFormatter.string(from: time))"
-        
-//        let formatter = DateComponentsFormatter()
-//        formatter.allowedUnits = [.hour, .minute, .second]
-//        formatter.unitsStyle = .full
-//
-//        let formattedString = formatter.string(from: TimeInterval(hourly.time))!
-//        print(formattedString)
         
         return cell
     }
@@ -190,42 +167,3 @@ extension DetailWeatherViewController: UITableViewDataSource {
     
     
 }
-
-//extension DetailWeatherViewController: CLLocationManagerDelegate {
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-//        print("locations = \(locValue.latitude) \(locValue.longitude)")
-//    }
-//
-////    func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
-////        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-////            completion(placemarks?.first?.locality,
-////                       placemarks?.first?.country,
-////                       error)
-////        }
-////    }
-////
-////    private func locationManagerReverse(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-////        guard let location: CLLocation = manager.location else { return }
-////        fetchCityAndCountry(from: location) { city, country, error in
-////            guard let city = city, let country = country, error == nil else { return }
-////            print(city + ", " + country)
-////        }
-////    }
-//}
-
-//class SpinnerViewController: UIViewController {
-//    var spinner = UIActivityIndicatorView(style: .whiteLarge)
-//
-//    override func loadView() {
-//        view = UIView()
-//        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
-//
-//        spinner.translatesAutoresizingMaskIntoConstraints = false
-//        spinner.startAnimating()
-//        view.addSubview(spinner)
-//
-//        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//    }
-//}

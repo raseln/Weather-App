@@ -73,10 +73,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             
         case 1:
             let hourleCell = tableViewDetail.dequeueReusableCell(withIdentifier: "HourlyTableViewCell", for: indexPath) as! HourlyTableViewCell
-//            let defaultCell = tableViewDetail.dequeueReusableCell(withIdentifier: "CurrentWeatherTableViewCell", for: indexPath) as! CurrentWeatherTableViewCell
-//
-//            return defaultCell
-            //hourleCell.collectionView.dataSource = self
+            
             hourleCell.hourlyData = weather?.hourly
             
             return hourleCell

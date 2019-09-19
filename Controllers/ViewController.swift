@@ -115,11 +115,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         }
     }
     
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-//        print("locations = \(locValue.latitude) \(locValue.longitude)")
-//    }
-    
     func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
             completion(placemarks?.first?.locality,
@@ -138,7 +133,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         //showLoadingView()
         
         //locationManager.stopUpdatingLocation()
-        //print(location.coordinate.latitude)
         fetchCityAndCountry(from: location) { city, country, error in
             guard let city = city, let country = country, error == nil else {
                 print(error ?? "No data")
@@ -234,15 +228,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
             return UIImage(named: "partly-cloudy-day")!
         }
     }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        print("Called")
-//        guard let location: CLLocation = manager.location else { return }
-//        fetchCityAndCountry(from: location) { city, country, error in
-//            guard let city = city, let country = country, error == nil else { return }
-//            print(city + ", " + country)
-//        }
-//    }
 
     
     @IBAction func editButtonDidTap(_ sender: UIBarButtonItem) {
@@ -289,7 +274,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return locationList.count
         return locationList.count
     }
     
@@ -300,40 +284,41 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.cityLable.text = location.name
         
-        let jsonURL = Bundle.main.url(forResource: "weatherData", withExtension: "json")!
-        do {
-            let jsonData = try Data(contentsOf: jsonURL)
-            var weather = try JSONDecoder().decode(Weather.self, from: jsonData)
-            let temperatureInCelciuus = (weather.currently.temperature - 32) * 0.56
-            weather.currently.temperature = temperatureInCelciuus
-            weatherList.append(weather)
-            cell.temperatureLabel.text = "\(String(format: "%.0f", temperatureInCelciuus))°C"
-            cell.temperatureImageView.image = getIcon(icon: weather.currently.icon)
-        } catch {
-            print("JSON Parse Error: \(error.localizedDescription)")
-        }
+//        let jsonURL = Bundle.main.url(forResource: "weatherData", withExtension: "json")!
+//        do {
+//            let jsonData = try Data(contentsOf: jsonURL)
+//            var weather = try JSONDecoder().decode(Weather.self, from: jsonData)
+//            let temperatureInCelciuus = (weather.currently.temperature - 32) * 0.56
+//            weather.currently.temperature = temperatureInCelciuus
+//            weatherList.append(weather)
+//            cell.temperatureLabel.text = "\(String(format: "%.0f", temperatureInCelciuus))°C"
+//            cell.temperatureImageView.image = getIcon(icon: weather.currently.icon)
+//        } catch {
+//            print("JSON Parse Error: \(error.localizedDescription)")
+//        }
         
         //If network is available then call api for data
-//        if isConnected {
-//            Alamofire.request("https://api.darksky.net/forecast/API_KEY/\(location.lat),\(location.lon)", method: .get).responseData { response in
-//                if response.result.isFailure, let error = response.result.error {
-//                    print("Network Error: \(error.localizedDescription)")
-//                }
-//
-//                if response.result.isSuccess, let value = response.result.value {
-//                    do {
-//                        var weather = try JSONDecoder().decode(Weather.self, from: value)
-//                        let temperatureInCelciuus = (weather.currently.temperature - 32) * 0.56
-//                        weather.currently.temperature = temperatureInCelciuus
-//                        self.weatherList.append(weather)
-//                        cell.temperatureLabel.text = "\(String(format: "%.0f", temperatureInCelciuus))°C"
-//                        cell.temperatureImageView.image = UIImage(named: "storm")
-//                    } catch {
-//                        print(error)
-//                    }
-//                }
-//            }
-//        }
+        if isConnected {
+            Alamofire.request("https://api.darksky.net/forecast/API_KEY/\(location.lat),\(location.lon)", method: .get).responseData { response in
+                if response.result.isFailure, let error = response.result.error {
+                    print("Network Error: \(error.localizedDescription)")
+                }
+
+                if response.result.isSuccess, let value = response.result.value {
+                    do {
+                        var weather = try JSONDecoder().decode(Weather.self, from: value)
+                        let temperatureInCelciuus = (weather.currently.temperature - 32) * 0.56
+                        weather.currently.temperature = temperatureInCelciuus
+                        self.weatherList.insert(weather, at: indexPath.row)
+                        //self.weatherList.append(weather)
+                        cell.temperatureLabel.text = "\(String(format: "%.0f", temperatureInCelciuus))°C"
+                        cell.temperatureImageView.image = UIImage(named: "storm")
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
+        }
         
         return cell
     }
@@ -355,6 +340,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 //
 //        let location = locationList[indexPath.row]
 //        detailViewController.location = location
+        
         let detailViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
         if indexPath.row <= weatherList.count {

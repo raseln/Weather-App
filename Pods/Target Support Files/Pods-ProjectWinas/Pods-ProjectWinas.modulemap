@@ -1,0 +1,6 @@
+framework module Pods_ProjectWinas {
+  umbrella header "Pods-ProjectWinas-umbrella.h"
+
+  export *
+  module * { export * }
+}

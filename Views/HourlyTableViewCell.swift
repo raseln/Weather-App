@@ -46,6 +46,13 @@ class HourlyTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollec
             cell.temperatureLabel.text = "\(String(format: "%.0f", temperatureInCelciuus))°C"
             cell.weatherImageView.image = getIcon(icon: hourly.icon)
             cell.timeLabel.text = "\(dateFormatter.string(from: time))"
+            
+            cell.contentView.layer.cornerRadius = 5.0
+            cell.contentView.layer.borderWidth = 0.5
+            cell.contentView.layer.shadowColor = UIColor.lightGray.cgColor
+            cell.contentView.layer.borderColor = UIColor.darkGray.cgColor
+            cell.contentView.layer.masksToBounds = true;
+            
         }
         
         return cell
