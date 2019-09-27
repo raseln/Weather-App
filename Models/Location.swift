@@ -15,7 +15,12 @@ import RealmSwift
 
 // MARK: - LocationElement
 class LocationElement: Object, Codable {
-    @objc dynamic var id: Int
+    @objc dynamic var id: Int = 0
     @objc dynamic var name, region: String
-    @objc dynamic var lat, lon: Double
+    @objc dynamic var lat: Double
+    @objc dynamic var lon: Double
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }

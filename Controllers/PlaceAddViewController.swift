@@ -14,9 +14,7 @@ class PlaceAddViewController: UIViewController {
     
     //Loading indicator
     let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-    
-    let apuxKey = "API_KEY"
-    
+        
     var locationList = [LocationElement]()
 
     @IBOutlet weak var searchBar: UISearchBar!
@@ -48,7 +46,7 @@ class PlaceAddViewController: UIViewController {
     func getPlaceNamesFromServer(name: String) {
         present(alert, animated: true, completion: nil) //loading indicator
         
-        let parameters: Parameters = ["q": name, "format": "json", "pretty": 1, "key": apuxKey]
+        let parameters: Parameters = ["q": name, "format": "json", "pretty": 1, "key": Constant.API_APUX]
         let baseUrl = "https://api.apixu.com/v1/search.json"
         
         Alamofire.request(baseUrl, method: .get, parameters: parameters).responseData { response in
@@ -74,12 +72,21 @@ class PlaceAddViewController: UIViewController {
     func saveLocation(location: LocationElement) {
         
         do {
-            try realm.write {
-                realm.add(location)
+            if realm.objects(LocationElement.self).filter("id = \(location.id)").first != nil {
+                
+                let errorAlert = UIAlertController(title: "Error!", message: "This location is already exist in your saved location", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+                errorAlert.addAction(cancelAction)
+                present(errorAlert, animated: true)
+                
+            }else {
+                try realm.write {
+                    realm.add(location)
+                }
+                
+                placeSavedFromChildViewController?()
+                dismiss(animated: true, completion: nil)
             }
-            
-            placeSavedFromChildViewController?()
-            dismiss(animated: true, completion: nil)
             
         } catch {
             print(error)

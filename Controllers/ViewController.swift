@@ -22,14 +22,9 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     @IBOutlet weak var labelCurrentTemperature: UILabel!
     @IBOutlet weak var imageCurrentTemperature: UIImageView!
     @IBOutlet weak var labelRainProbability: UILabel!
-//    @IBOutlet weak var labelAlertTitle: UILabel!
-//    @IBOutlet weak var textViewAlertDescription: UITextView!
     
-    //var location = LocationElement(id: 1, name: "Dhaka", region: "DHK", lat: 22.896734, lon: 91.847644)
     var locationList = [LocationElement]()
-    //var loc: Results<LocationElement>?
     let locationManager = CLLocationManager()
-    //var userCurrentLocation: CLLocation?
     var currentLocationWeather: Weather?
     var weatherList = [Weather]()
     
@@ -53,15 +48,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         loadingView.view.addSubview(loadingIndicator)
         // Loading indicator end //
         
-//        if Connectivity.isConnectedToInternet {
-//            //print("Connected")
-//            getPlaceList()
-//        }else {
-//            //print("Not connected")
-//            labelCurrentTemperature.text = ""
-//            labelCurrentLocation.text = "No internet connection"
-//        }
-        
         DispatchQueue.main.async {
             self.present(self.loadingView, animated: true)
         }
@@ -72,14 +58,14 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
             }
         }
         
-        getPlaceList()
-        
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+        
+        getPlaceList()
     }
     
     @IBAction func showAlertDidTap(_ sender: UIButton) {
@@ -95,6 +81,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         alert.addAction(cancelAction)
         present(alert, animated: true)
     }
+    
     
     @IBAction func addButtonDidTap(_ sender: UIBarButtonItem) {
         if let addViewController = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -114,6 +101,17 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
             present(addViewController, animated: true)
         }
     }
+    
+    
+    @IBAction func mapButtonDidTap(_ sender: Any) {
+        if let mapViewController = UIStoryboard(name: "Main", bundle: Bundle.main)
+        .instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
+            mapViewController.locationList = locationList
+            mapViewController.weatherList = weatherList
+            navigationController?.pushViewController(mapViewController, animated: true)
+        }
+    }
+    
     
     func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
@@ -147,7 +145,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     func updateCurrentLocationTemperature(location: CLLocation) {
         if isConnected {
-            Alamofire.request("https://api.darksky.net/forecast/API_KEY/\(location.coordinate.latitude),\(location.coordinate.longitude)", method: .get).responseData { response in
+            Alamofire.request("https://api.darksky.net/forecast/\(Constant.API_DARK_SKY)/\(location.coordinate.latitude),\(location.coordinate.longitude)", method: .get).responseData { response in
                 if response.result.isFailure, let error = response.result.error {
                     print("Network Error: \(error.localizedDescription)")
                 }
@@ -159,15 +157,9 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                         weather.currently.temperature = temperatureInCelcius
                         self.currentLocationWeather = weather
                         self.labelCurrentTemperature.text = "\(String(format: "%.0f", temperatureInCelcius))°C"
-                        self.imageCurrentTemperature.image = self.getIcon(icon: weather.currently.icon)
+                        self.imageCurrentTemperature.image = IconHelper.getIcon(icon: weather.currently.icon)
                         let rainProbability = (weather.currently.precipProbability * 100)
                         self.labelRainProbability.text = "Probability of rain today: \(String(format: "%.0f", rainProbability))%"
-//                        if let alert = weather.alerts {
-//                            self.labelAlertTitle.text = alert.first?.title
-//                            self.textViewAlertDescription.text = alert.first?.description
-//                        }else{
-//                            self.labelAlertTitle.text = "No alert"
-//                        }
                         
                     } catch {
                         print(error)
@@ -194,40 +186,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
-    func getIcon(icon: Icon) -> UIImage {
-        switch icon {
-        case .cloudy:
-            return UIImage(named: "cloudy")!
-            
-        case .clearDay:
-            return UIImage(named: "cloudy")!
-            
-        case .rain:
-            return UIImage(named: "rain")!
-            
-        case .snow:
-            return UIImage(named: "snow")!
-            
-        case .clearNight:
-            return UIImage(named: "clear-night")!
-            
-        case .sleet:
-            return UIImage(named: "sleet")!
-            
-        case .wind:
-            return UIImage(named: "wind")!
-            
-        case .fog:
-            return UIImage(named: "fog")!
-            
-        case .partlyCloudyNight:
-            return UIImage(named: "partly-cloudy-night")!
-            
-        default:
-            return UIImage(named: "partly-cloudy-day")!
-        }
-    }
 
     
     @IBAction func editButtonDidTap(_ sender: UIBarButtonItem) {
@@ -240,6 +198,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         }
     }
     
+    
     func getPlaceList() {
         let realm = try! Realm()
         let locationElements = realm.objects(LocationElement.self)
@@ -251,22 +210,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
             tableView.reloadData()
         }
     }
-    
-//    func deleteLocationFromDatabase(location: LocationElement, indexPath: IndexPath) {
-//        do {
-//            try Realm().write {
-//                try Realm().delete(location)
-//            }
-//
-//            locationList.remove(at: indexPath.row)
-//            tableView.beginUpdates()
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//            tableView.endUpdates()
-//
-//        } catch {
-//            print(error)
-//        }
-//    }
 
 }
 
@@ -299,7 +242,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         //If network is available then call api for data
         if isConnected {
-            Alamofire.request("https://api.darksky.net/forecast/API_KEY/\(location.lat),\(location.lon)", method: .get).responseData { response in
+            Alamofire.request("https://api.darksky.net/forecast/\(Constant.API_DARK_SKY)/\(location.lat),\(location.lon)", method: .get).responseData { response in
                 if response.result.isFailure, let error = response.result.error {
                     print("Network Error: \(error.localizedDescription)")
                 }
@@ -309,10 +252,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                         var weather = try JSONDecoder().decode(Weather.self, from: value)
                         let temperatureInCelciuus = (weather.currently.temperature - 32) * 0.56
                         weather.currently.temperature = temperatureInCelciuus
-                        self.weatherList.insert(weather, at: indexPath.row)
-                        //self.weatherList.append(weather)
+                        //self.weatherList.insert(weather, at: indexPath.row)
+                        self.weatherList.append(weather)
                         cell.temperatureLabel.text = "\(String(format: "%.0f", temperatureInCelciuus))°C"
-                        cell.temperatureImageView.image = UIImage(named: "storm")
+                        cell.temperatureImageView.image = IconHelper.getIcon(icon: weather.currently.icon)
                     } catch {
                         print(error)
                     }
@@ -353,7 +296,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let location = locationList[indexPath.row]
-        //deleteLocationFromDatabase(location: location, indexPath: indexPath)
         do {
             try Realm().write {
                 try Realm().delete(location)
@@ -374,15 +316,3 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
 }
-
-
-//extension ViewController: DataAddedFromChildController {
-//    func onDataAdded() {
-//        do {
-//            let location = try Realm().objects(LocationElement.self).last
-//            print(location?.name ?? "No data")
-//        } catch {
-//            print(error)
-//        }
-//    }
-//}
